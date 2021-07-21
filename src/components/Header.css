@@ -8,59 +8,59 @@
   z-index: 100;
 }
 
-.header_logo {
+.header__logo {
   width: 100px;
   object-fit: contain;
   margin: 10px 20px 0;
 }
 
-.header_search {
+.header__search {
   display: flex;
   flex: 1;
   align-items: center;
   border-radius: 24px;
 }
 
-.header_search_input {
+.header__searchInput {
   height: 12px;
   padding: 10px;
   border: none;
   width: 100%;
 }
 
-.header_search_icon {
+.header__searchIcon {
   padding: 5px;
   height: 22px !important;
   background-color: #cd9042;
 }
 
-.header_nav {
+.header__nav {
   display: flex;
   justify-content: space-evenly;
 }
 
-.header_option {
+.header__option {
   display: flex;
   flex-direction: column;
   color: white;
   margin: 0 10px;
 }
 
-.header_option_line1 {
+.header__optionLineOne {
   font-size: 10px;
 }
 
-.header_option_line2 {
+.header__optionLineTwo {
   font-size: 13px;
   font-weight: 800;
 }
 
-.header_basket {
+.header__basket {
   display: flex;
   align-items: center;
   color: white;
 }
 
-.header_basket_count {
+.header__basketCount {
   margin: 0 10px;
 }
