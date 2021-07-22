@@ -1,5 +1,6 @@
 export const initialState = {
   cart: [],
+  user: null,
 };
 
 // Selector
@@ -24,6 +25,11 @@ const reducer = (state, action) => {
       }
       console.log(newCart);
       return { ...state, cart: newCart };
+    case "SET_USER":
+      return {
+        ...state,
+        user: action.user,
+      };
     default:
       return state;
   }

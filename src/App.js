@@ -4,8 +4,31 @@ import Home from "./components/Home";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Checkout from "./components/Checkout";
 import Login from "./components/Login";
+import { auth } from "./firebase";
+import { useEffect } from "react";
+import { useStateValue } from "./StateProvider";
 
 function App() {
+  const [_, dispatch] = useStateValue();
+
+  useEffect(() => {
+    auth.onAuthStateChanged((user) => {
+      console.log("Current User => ", user);
+      if (user) {
+        // the user just logged in / was logged in
+        dispatch({
+          type: "SET_USER",
+          user,
+        });
+      } else {
+        dispatch({
+          type: "SET_USER",
+          user: null,
+        });
+      }
+    });
+  }, [dispatch]);
+
   return (
     //TODO: BEM naming convention
     <Router>
