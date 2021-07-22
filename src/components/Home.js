@@ -14,43 +14,49 @@ function Home() {
 
         <div className="home__row">
           <Product
+            id="123456"
             title="The Silmarillion"
             image="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1610045590l/7332._SX318_.jpg"
-            price="7.99"
+            price={7.99}
             rating={5}
           />
           <Product
+            id="123456"
             title="The Silmarillion"
             image="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1610045590l/7332._SX318_.jpg"
-            price="7.99"
-            rating={5}
-          />
-        </div>
-        <div className="home__row">
-          <Product
-            title="The Silmarillion"
-            image="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1610045590l/7332._SX318_.jpg"
-            price="7.99"
-            rating={5}
-          />
-          <Product
-            title="The Silmarillion"
-            image="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1610045590l/7332._SX318_.jpg"
-            price="7.99"
-            rating={5}
-          />
-          <Product
-            title="The Silmarillion"
-            image="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1610045590l/7332._SX318_.jpg"
-            price="7.99"
+            price={7.99}
             rating={5}
           />
         </div>
         <div className="home__row">
           <Product
+            id="123456"
             title="The Silmarillion"
             image="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1610045590l/7332._SX318_.jpg"
-            price="7.99"
+            price={7.99}
+            rating={5}
+          />
+          <Product
+            id="123456"
+            title="The Silmarillion"
+            image="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1610045590l/7332._SX318_.jpg"
+            price={7.99}
+            rating={5}
+          />
+          <Product
+            id="123456"
+            title="The Silmarillion"
+            image="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1610045590l/7332._SX318_.jpg"
+            price={7.99}
+            rating={5}
+          />
+        </div>
+        <div className="home__row">
+          <Product
+            id="123456"
+            title="The Silmarillion"
+            image="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1610045590l/7332._SX318_.jpg"
+            price={7.99}
             rating={5}
           />
         </div>
