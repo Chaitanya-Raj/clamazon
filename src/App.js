@@ -9,6 +9,7 @@ import { useEffect } from "react";
 import { useStateValue } from "./StateProvider";
 
 function App() {
+  // eslint-disable-next-line no-unused-vars
   const [_, dispatch] = useStateValue();
 
   useEffect(() => {

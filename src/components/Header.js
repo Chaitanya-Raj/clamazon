@@ -7,6 +7,7 @@ import { useStateValue } from "../StateProvider";
 import { auth } from "../firebase";
 
 function Header() {
+  // eslint-disable-next-line no-unused-vars
   const [{ cart, user }, dispatch] = useStateValue();
 
   const handleAuth = () => {
