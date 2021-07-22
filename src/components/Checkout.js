@@ -16,8 +16,9 @@ function Checkout() {
           className="checkout__ad"
         />
         <div>
-          {user && <h3>Hello, {user.email}</h3>}
+          {user && <h3>Hello, {user.email.split("@")[0]}</h3>}
           <h2 className="checkout__title">Your Shopping Cart</h2>
+          {/* TODO: add react-flip-move */}
           {cart?.map((item) => (
             <CheckoutProduct
               id={item.id}
