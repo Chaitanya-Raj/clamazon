@@ -5,6 +5,7 @@ import { useStateValue } from "../StateProvider";
 import { getCartTotal } from "../reducer";
 
 function Subtotal() {
+  // eslint-disable-next-line no-unused-vars
   const [{ cart }, dispatch] = useStateValue();
 
   console.log(cart);

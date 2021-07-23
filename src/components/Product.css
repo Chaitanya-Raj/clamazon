@@ -12,6 +12,13 @@
   z-index: 1;
 }
 
+.product:hover {
+  transition: 0.2s ease-in-out;
+  transform: scale(1.05);
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.267),
+    -1px -1px 10px rgba(0, 0, 0, 0.267);
+}
+
 .product__info {
   height: 100px;
   width: 100%;
@@ -43,4 +50,10 @@
   margin-top: 10px;
   border-color: #a88734 #9c7e31 #846a29;
   color: #111;
+}
+
+@media screen and (max-width: 768px) {
+  .product {
+    width: auto;
+  }
 }

@@ -3,6 +3,7 @@ import { useStateValue } from "../StateProvider";
 import "./Checkout.css";
 import CheckoutProduct from "./CheckoutProduct";
 import Subtotal from "./Subtotal";
+import FlipMove from "react-flip-move";
 
 function Checkout() {
   // eslint-disable-next-line no-unused-vars
@@ -16,19 +17,21 @@ function Checkout() {
           alt=""
           className="checkout__ad"
         />
-        <div>
+        <div className="checkout__list">
           {user && <h3>Hello, {user.email.split("@")[0]}</h3>}
           <h2 className="checkout__title">Your Shopping Cart</h2>
-          {/* TODO: add react-flip-move */}
-          {cart?.map((item) => (
-            <CheckoutProduct
-              id={item.id}
-              title={item.title}
-              image={item.image}
-              price={item.price}
-              rating={item.rating}
-            />
-          ))}
+          <FlipMove>
+            {cart?.map((item) => (
+              <CheckoutProduct
+                key={item.id}
+                id={item.id}
+                title={item.title}
+                image={item.image}
+                price={item.price}
+                rating={item.rating}
+              />
+            ))}
+          </FlipMove>
         </div>
       </div>
       <div className="checkout__right">
