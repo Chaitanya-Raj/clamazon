@@ -25,7 +25,7 @@ const CheckoutProduct = forwardRef(
         <div className="checkoutProduct__info">
           <p className="checkoutProduct_title">{title}</p>
           <p className="checkoutProduct__price">
-            <small>$</small>
+            <small>₹</small>
             <strong>{price}</strong>
           </p>
           <div className="checkoutProdut">
