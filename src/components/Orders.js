@@ -3,10 +3,14 @@ import "./Orders.css";
 import { db } from "../firebase";
 import { useStateValue } from "../StateProvider";
 import Order from "./Order";
+import { useHistory } from "react-router-dom";
+
 function Orders() {
   // eslint-disable-next-line no-unused-vars
   const [{ cart, user }, dispatch] = useStateValue();
   const [orders, setOrders] = useState([]);
+
+  const history = useHistory();
 
   useEffect(() => {
     user

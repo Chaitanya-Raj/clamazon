@@ -22,10 +22,6 @@ function Header() {
     }
   };
 
-  const showOrders = () => {
-    console.log(user);
-  };
-
   return (
     <div className="header">
       <Link to="/">
@@ -35,6 +31,7 @@ function Header() {
           alt="logo"
         />
       </Link>
+      {/* TODO: Add search functionality */}
       <div className="header__search">
         <input type="text" className="header__searchInput" />
         <SearchIcon className="header__searchIcon" />
@@ -56,7 +53,7 @@ function Header() {
             </div>
           </Link>
           <Link to={user !== null ? "/orders" : "/login"}>
-            <div onClick={showOrders} className="header__option">
+            <div className="header__option">
               <span className="header__optionLineOne">Returns</span>
               <span className="header__optionLineTwo">& Orders</span>
             </div>

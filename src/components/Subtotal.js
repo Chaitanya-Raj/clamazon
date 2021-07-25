@@ -31,8 +31,9 @@ function Subtotal() {
       />
       <button
         onClick={(e) => {
-          if (user) history.push("/payment");
-          else history.push("/login");
+          if (user === null) history.push("/login");
+          else if (cart.length === 0) window.alert("No items to checkout");
+          else history.push("/payment");
         }}
       >
         Proceed to Checkout

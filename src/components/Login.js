@@ -19,10 +19,7 @@ function Login() {
           history.push("/");
         }
       })
-      .catch((err) =>
-        // TODO: show errors as toast
-        console.warn(err.message)
-      );
+      .catch((err) => window.alert(err.message));
   };
 
   const register = (e) => {

@@ -20,35 +20,35 @@ function Payment() {
 
   const [processing, setProcessing] = useState(false);
   const [succeeded, setSucceeded] = useState(false);
-  // TODO: Show Error as toast
-  const [error, setError] = useState(null);
   const [disabled, setDisabled] = useState(true);
   const [clientSecret, setClientSecret] = useState(true);
 
   useEffect(() => {
     const getClientSecret = async () => {
-      const response = await axios({
-        method: "post",
-        url: `/payments/create?total=${getCartTotal(cart) * 100}`,
-      });
-      console.log("Response => ", response.data);
-      setClientSecret(response.data.clientSecret);
+      if (getCartTotal(cart) >= 1) {
+        const response = await axios({
+          method: "post",
+          url: `/payments/create?total=${getCartTotal(cart) * 100}`,
+        });
+        setClientSecret(response.data.clientSecret);
+      }
     };
 
     getClientSecret();
   }, [cart]);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setProcessing(true);
 
-    console.log("Client Secret => ", clientSecret);
-
     try {
-      const paymentIntent = await stripe.confirmCardPayment(clientSecret, {
+      const payload = await stripe.confirmCardPayment(clientSecret, {
         payment_method: {
           card: elements.getElement(CardElement),
         },
       });
+      const paymentIntent = payload.paymentIntent;
+      console.log(paymentIntent);
       db.collection("users")
         .doc(user?.uid)
         .collection("orders")
@@ -62,16 +62,17 @@ function Payment() {
       dispatch({ type: "EMPTY_CART" });
 
       setSucceeded(true);
-      setError(null);
       setProcessing(false);
 
       history.replace("/orders");
-    } catch (error) {}
+    } catch (error) {
+      window.alert(error.message);
+    }
   };
 
   const handleChange = (e) => {
     setDisabled(e.empty);
-    setError(e.error ? e.error.message : "");
+    if (e.error) window.alert(e.error.message);
   };
 
   return (
@@ -80,7 +81,7 @@ function Payment() {
         <h1>Checkout ({<Link to="/checkout">{cart?.length} items</Link>})</h1>
         <div className="payment__section">
           <div className="payment__title">
-            <h3>Delivery Address</h3>
+            <h4>Delivery Address</h4>
           </div>
           <div className="payment__address">
             <p>{user?.email}</p>

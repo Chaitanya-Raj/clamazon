@@ -1,8 +1,21 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./Home.css";
 import Product from "./Product";
+import { db } from "../firebase";
 
 function Home() {
+  const [items, setItems] = useState(null);
+
+  useEffect(() => {
+    db.collection("items")
+      .get()
+      .then((snapshot) => {
+        setItems(
+          snapshot.docs.map((doc) => ({ id: doc.id, data: doc.data() }))
+        );
+      });
+  }, []);
+
   return (
     <div className="home">
       <div className="home__container">
@@ -13,52 +26,16 @@ function Home() {
         />
 
         <div className="home__row">
-          <Product
-            id="123456"
-            title="The Silmarillion"
-            image="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1610045590l/7332._SX318_.jpg"
-            price={7.99}
-            rating={5}
-          />
-          <Product
-            id="123456"
-            title="The Silmarillion"
-            image="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1610045590l/7332._SX318_.jpg"
-            price={7.99}
-            rating={5}
-          />
-        </div>
-        <div className="home__row">
-          <Product
-            id="123456"
-            title="The Silmarillion"
-            image="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1610045590l/7332._SX318_.jpg"
-            price={7.99}
-            rating={5}
-          />
-          <Product
-            id="123456"
-            title="The Silmarillion"
-            image="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1610045590l/7332._SX318_.jpg"
-            price={7.99}
-            rating={5}
-          />
-          <Product
-            id="123456"
-            title="The Silmarillion"
-            image="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1610045590l/7332._SX318_.jpg"
-            price={7.99}
-            rating={5}
-          />
-        </div>
-        <div className="home__row">
-          <Product
-            id="123456"
-            title="The Silmarillion"
-            image="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1610045590l/7332._SX318_.jpg"
-            price={7.99}
-            rating={5}
-          />
+          {items?.map((item) => (
+            <Product
+              key={item.id}
+              id={item.id}
+              title={item.data.title}
+              image={item.data.image}
+              price={item.data.price}
+              rating={item.data.rating}
+            />
+          ))}
         </div>
       </div>
     </div>

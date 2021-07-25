@@ -25,10 +25,6 @@
   flex: 0.2;
 }
 
-.payment__address {
-  padding-left: 30px;
-}
-
 .payment__address,
 .payment__items,
 .payment__details {
@@ -39,7 +35,7 @@
   max-width: 400px;
 }
 
-.payment__details > h3 {
+.payment__details > h4 {
   padding-bottom: 20px;
 }
 
@@ -55,4 +51,16 @@
   color: #111;
 }
 
-/* TODO: add disabled styling for the button */
+.payment__details > form > div > button:disabled {
+  background: lightgray;
+}
+
+@media screen and (max-width: 768px) {
+  .payment__section {
+    flex-direction: column;
+  }
+
+  .payment__title {
+    margin-bottom: 15px;
+  }
+}

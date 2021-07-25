@@ -17,6 +17,7 @@
 
 .home__row {
   display: flex;
+  flex-wrap: wrap;
   z-index: 1;
   margin: 0 5px;
 }

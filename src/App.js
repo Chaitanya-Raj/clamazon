@@ -20,9 +20,10 @@ function App() {
   // eslint-disable-next-line no-unused-vars
   const [_, dispatch] = useStateValue();
 
+  // TODO: Use toasts instead of window.alert
+
   useEffect(() => {
     auth.onAuthStateChanged((user) => {
-      console.log("Current User => ", user);
       if (user) {
         // the user just logged in / was logged in
         dispatch({
@@ -39,7 +40,6 @@ function App() {
   }, [dispatch]);
 
   return (
-    //TODO: BEM naming convention
     <Router>
       <div className="app">
         <Switch>

@@ -98,4 +98,8 @@ a {
   .header__cart {
     margin-left: 10px;
   }
+
+  .header__cartCount {
+    margin-right: 15px;
+  }
 }
