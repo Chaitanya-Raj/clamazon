@@ -4,7 +4,7 @@ import StarIcon from "@material-ui/icons/Star";
 import { useStateValue } from "../StateProvider";
 
 const CheckoutProduct = forwardRef(
-  ({ id, image, title, price, rating }, ref) => {
+  ({ id, image, title, price, rating, hideButton }, ref) => {
     // eslint-disable-next-line no-unused-vars
     const [{ cart }, dispatch] = useStateValue();
 
@@ -35,7 +35,9 @@ const CheckoutProduct = forwardRef(
                 return <StarIcon className="product__ratingStar" />;
               })}
           </div>
-          <button onClick={removeFromCart}>Remove from Cart</button>
+          {hideButton && (
+            <button onClick={removeFromCart}>Remove from Cart</button>
+          )}
         </div>
       </div>
     );

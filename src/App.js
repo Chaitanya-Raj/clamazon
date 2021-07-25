@@ -10,6 +10,7 @@ import { useEffect } from "react";
 import { useStateValue } from "./StateProvider";
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
+import Orders from "./components/Orders";
 
 const promise = loadStripe(
   "pk_test_51JGjMSSEC8HY5J1IkUkj0IU74NvXVEXsuJ4BeqaM3aAFXgpNP2R4YYAPsAoOngWX8PZom9ZxNwbVILg4zIIMWfxD00dXhyuRfz"
@@ -54,6 +55,10 @@ function App() {
             <Elements stripe={promise}>
               <Payment />
             </Elements>
+          </Route>
+          <Route path="/orders">
+            <Header />
+            <Orders />
           </Route>
           {/* Keep the default route at the bottom cause if it's at the top it'll be hit no matter the path*/}
           <Route path="/">

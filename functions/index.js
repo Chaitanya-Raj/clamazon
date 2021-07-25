@@ -32,3 +32,5 @@ app.post("/payments/create", async (req, res) => {
 
 // Listen command
 exports.api = functions.https.onRequest(app);
+
+// TODO: move backend to heroku

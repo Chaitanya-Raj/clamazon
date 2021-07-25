@@ -7,7 +7,7 @@ import { useHistory } from "react-router-dom";
 
 function Subtotal() {
   // eslint-disable-next-line no-unused-vars
-  const [{ cart }, dispatch] = useStateValue();
+  const [{ cart, user }, dispatch] = useStateValue();
   const history = useHistory();
 
   return (
@@ -29,7 +29,12 @@ function Subtotal() {
         thousandSeparator={"true"}
         prefix={"₹"}
       />
-      <button onClick={(e) => history.push("/payment")}>
+      <button
+        onClick={(e) => {
+          if (user) history.push("/payment");
+          else history.push("/login");
+        }}
+      >
         Proceed to Checkout
       </button>
     </div>

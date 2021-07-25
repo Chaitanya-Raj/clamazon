@@ -3,7 +3,7 @@ import "./Header.css";
 import SearchIcon from "@material-ui/icons/Search";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import MenuIcon from "@material-ui/icons/Menu";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { useStateValue } from "../StateProvider";
 import { auth } from "../firebase";
 import { useState } from "react";
@@ -13,8 +13,17 @@ function Header() {
   const [{ cart, user }, dispatch] = useStateValue();
   const [showMenu, setShowMenu] = useState(false);
 
+  const history = useHistory();
+
   const handleAuth = () => {
-    if (user) auth.signOut();
+    if (user) {
+      auth.signOut();
+      history.replace("/");
+    }
+  };
+
+  const showOrders = () => {
+    console.log(user);
   };
 
   return (
@@ -46,10 +55,12 @@ function Header() {
               </span>
             </div>
           </Link>
-          <div className="header__option">
-            <span className="header__optionLineOne">Returns</span>
-            <span className="header__optionLineTwo">& Orders</span>
-          </div>
+          <Link to={user !== null ? "/orders" : "/login"}>
+            <div onClick={showOrders} className="header__option">
+              <span className="header__optionLineOne">Returns</span>
+              <span className="header__optionLineTwo">& Orders</span>
+            </div>
+          </Link>
           <div className="header__option">
             <span className="header__optionLineOne">Your</span>
             <span className="header__optionLineTwo">Prime</span>

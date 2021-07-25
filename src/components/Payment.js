@@ -7,6 +7,7 @@ import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import CurrencyFormat from "react-currency-format";
 import { getCartTotal } from "../reducer";
 import axios from "../axios";
+import { db } from "../firebase";
 
 function Payment() {
   // eslint-disable-next-line no-unused-vars
@@ -19,6 +20,7 @@ function Payment() {
 
   const [processing, setProcessing] = useState(false);
   const [succeeded, setSucceeded] = useState(false);
+  // TODO: Show Error as toast
   const [error, setError] = useState(null);
   const [disabled, setDisabled] = useState(true);
   const [clientSecret, setClientSecret] = useState(true);
@@ -41,16 +43,30 @@ function Payment() {
 
     console.log("Client Secret => ", clientSecret);
 
-    const payload = await stripe.confirmCardPayment(clientSecret, {
-      payment_method: {
-        card: elements.getElement(CardElement),
-      },
-    });
-    setSucceeded(true);
-    setError(null);
-    setProcessing(false);
+    try {
+      const paymentIntent = await stripe.confirmCardPayment(clientSecret, {
+        payment_method: {
+          card: elements.getElement(CardElement),
+        },
+      });
+      db.collection("users")
+        .doc(user?.uid)
+        .collection("orders")
+        .doc(paymentIntent.id)
+        .set({
+          cart,
+          amount: paymentIntent.amount,
+          created: paymentIntent.created,
+        });
 
-    history.replace("/orders");
+      dispatch({ type: "EMPTY_CART" });
+
+      setSucceeded(true);
+      setError(null);
+      setProcessing(false);
+
+      history.replace("/orders");
+    } catch (error) {}
   };
 
   const handleChange = (e) => {
