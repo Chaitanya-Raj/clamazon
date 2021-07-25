@@ -11,6 +11,7 @@ import { useStateValue } from "./StateProvider";
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
 import Orders from "./components/Orders";
+import Footer from "./components/Footer";
 
 const promise = loadStripe(
   "pk_test_51JGjMSSEC8HY5J1IkUkj0IU74NvXVEXsuJ4BeqaM3aAFXgpNP2R4YYAPsAoOngWX8PZom9ZxNwbVILg4zIIMWfxD00dXhyuRfz"
@@ -64,6 +65,7 @@ function App() {
           <Route path="/">
             <Header />
             <Home />
+            <Footer />
           </Route>
         </Switch>
       </div>

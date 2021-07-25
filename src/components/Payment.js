@@ -119,7 +119,7 @@ function Payment() {
                   decimalScale={2}
                   value={getCartTotal(cart)}
                   displayType={"text"}
-                  thousandSeparator={"true"}
+                  thousandSeparator={true}
                   prefix={"₹"}
                 />
                 <button disabled={processing || disabled || succeeded}>

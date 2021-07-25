@@ -29,7 +29,7 @@ function Order({ order }) {
         decimalScale={2}
         value={order.data.amount / 100}
         displayType={"text"}
-        thousandSeparator={"true"}
+        thousandSeparator={true}
         prefix={"₹"}
       />
     </div>

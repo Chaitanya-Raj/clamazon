@@ -19,12 +19,12 @@ function Home() {
   return (
     <div className="home">
       <div className="home__container">
+        {/* TODO: Implement carousel */}
         <img
           src="https://images-eu.ssl-images-amazon.com/images/G/31/img20/PC/Mayactivation/Accessoriesday1/D23140543_IN_CEPC_Electronicsaccessories_underRs999_3000x12000.5x._CB669031984_.jpg"
           alt="banner"
           className="home__image"
         />
-
         <div className="home__row">
           {items?.map((item) => (
             <Product

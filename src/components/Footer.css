@@ -1,0 +1,26 @@
+.footer {
+  margin: 0;
+  justify-content: space-around;
+  background-color: #131921;
+  color: #fff;
+  display: flex;
+  margin-top: 30px;
+}
+
+.footer__col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30px;
+  margin-bottom: 50px;
+}
+
+.footer__col > div {
+  margin-top: 10px;
+}
+
+@media screen and (max-width: 768px) {
+  .footer {
+    flex-direction: column;
+  }
+}

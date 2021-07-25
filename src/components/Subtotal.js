@@ -26,7 +26,7 @@ function Subtotal() {
         decimalScale={2}
         value={getCartTotal(cart)}
         displayType={"text"}
-        thousandSeparator={"true"}
+        thousandSeparator={true}
         prefix={"₹"}
       />
       <button
