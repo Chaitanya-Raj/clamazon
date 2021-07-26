@@ -24,7 +24,7 @@
 
 .checkoutProduct__image {
   object-fit: contain;
-  width: 180px;
+  max-width: 50%;
   height: 180px;
 }
 

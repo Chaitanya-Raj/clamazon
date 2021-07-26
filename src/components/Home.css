@@ -6,6 +6,10 @@
   max-width: 100vw;
 }
 
+.home__slideshow {
+  margin-bottom: -150px;
+}
+
 .home__image {
   width: 100%;
   z-index: -1;
@@ -29,5 +33,9 @@
 
   .home__image {
     margin-bottom: -70px;
+  }
+
+  .home__slideshow {
+    margin-bottom: -300px;
   }
 }
